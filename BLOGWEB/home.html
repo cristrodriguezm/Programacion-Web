@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<style>
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  header {
+    background-color: #1abc9c;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 36px;
+    color: #fff;
+    margin: 0;
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  nav ul li {
+    margin-left: 20px;
+  }
+
+  nav ul li:first-child {
+    margin-left: 0;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  nav ul li a:hover {
+    color: #000;
+  }
+
+  main {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  section {
+    flex: 1;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  section:last-child {
+    margin-right: 0;
+  }
+
+  h2 {
+    font-size: 28px;
+    margin: 20px;
+  }
+
+  article {
+    padding: 20px;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .slideshow-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+  }
+
+  .slideshow-image {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slideshow-image.active {
+    opacity: 1;
+    z-index: 1;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Blog de Videojuegos</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <header>
+    <h1>Blog de Videojuegos</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="blog.html">Analisis</a></li>
+        <li><a href="reviews.html">Reseñas</a></li>
+        <li><a href="news.html">Noticias</a></li>
+        <li><a href="about.html">Acerca de</a></li>
+        <li><a href="registrar.html">Registrar</a></li>
+      </ul>
+    </nav>
+
+  </header>
+  <div class="slideshow-container">
+    <img class="slideshow-image" src="imagenes/portada1.jpeg" />
+    <img class="slideshow-image" src="imagenes/portada2.jpeg" />
+    <img class="slideshow-image" src="imagenes/portada3.jpeg" />
+  </div>
+  <main>
+    <section>
+      <h2>Últimas noticias</h2>
+      <article>
+        <h3>Se anuncia el lanzamiento de "Juego X"</h3>
+        <p>El desarrollador Y ha anunciado el lanzamiento de su último juego, "Juego X", para finales de este
+          año. El
+          juego promete ser uno de los más emocionantes del año.</p>
+        <a href="#">Leer más</a>
+      </article>
+      <article>
+        <h3>"Juego Z" alcanza los 10 millones de copias vendidas</h3>
+        <p>El juego "Juego Z" ha alcanzado un nuevo hito al vender más de 10 millones de copias en todo el
+          mundo. Los
+          fans están entusiasmados con el éxito del juego y esperan ansiosamente una secuela.</p>
+        <a href="#">Leer más</a>
+      </article>
+    </section>
+    <section>
+      <h2>Reseñas</h2>
+      <article>
+        <h3>Reseña de "Juego A"</h3>
+        <p>"Juego A" es un juego de acción emocionante que pone a los jugadores en el papel de un héroe que
+          lucha contra
+          el mal en un mundo postapocalíptico. La jugabilidad es suave y la historia es emocionante, lo que lo
+          convierte
+          en una excelente adición a cualquier colección de juegos de acción.</p>
+        <a href="#">Leer más</a>
+      </article>
+      <article>
+        <h3>Reseña de "Juego B"</h3>
+        <p>"Juego B" es un juego de aventuras en el que los jugadores se sumergen en un mundo mágico lleno de
+          personajes
+          interesantes y desafíos emocionantes. La historia es rica y compleja, y la jugabilidad es suave y
+          satisfactoria. En general, "Juego B" es un juego que vale la pena jugar.</p>
+        <a href="#">Leer más</a>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <p>Blog de Videojuegos &copy; 2023</p>
+  </footer>
+  <script>
+    const images = document.querySelectorAll('.slideshow-image');
+    let currentImageIndex = 0;
+
+    setInterval(() => {
+      images[currentImageIndex].classList.remove('active');
+      currentImageIndex++;
+      if (currentImageIndex === images.length) {
+        currentImageIndex = 0;
+      }
+      images[currentImageIndex].classList.add('active');
+    }, 2500);
+  </script>
+</body>
+
+</html>

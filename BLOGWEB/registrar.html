@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registrate</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        header {
+            background-color: #1abc9c;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #000;
+        }
+
+        .contenido-principal {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="despacho"] {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        input[type="submit"],
+        button[type="reset"] {
+            background-color: #ff6b6b;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            transition: all 0.3s ease-in-out;
+
+        }
+
+        input[type="submit"]:hover,
+        button[type="reset"]:hover {
+            background-color: #e64c4c;
+        }
+
+
+    </style>
+</head>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="recuperasPass.html">Recuperar Contraseña</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<div class="contenido-principal">
+    <h1>Registrate</h1>
+    <form action="#" method="post" onsubmit="return validarFormulario()">
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu Nombre Completo">
+
+        <label for="apellido">Nombre de Usuario:</label>
+        <input type="text" id="apellido" name="apellido"
+            placeholder="Ingresa tu nombre de usuario para ingresar mas adelante">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico">
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Ingresa tu contraseña">
+
+        <label for="confirmar-contrasena">Confirmar Contraseña:</label>
+        <input type="password" id="confirmar-contrasena" name="confirmar-contrasena"
+            placeholder="Confirma tu contraseña">
+
+        <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+
+        <label for="despacho">Direccion Despacho (Opcional):</label>
+        <input type="despacho" id="despacho" name="despacho" placeholder="Ingresa direccion de despacho">
+
+        <input type="submit" value="Registrarse" class="boton">
+        <button type="reset" class="boton">Limpiar</button>
+    </form>
+</div>
+
+
+<script>
+    function validarFormulario() {
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var email = document.getElementById("email").value;
+        var contrasena = document.getElementById("contrasena").value;
+        var confirmarContrasena = document.getElementById("confirmar-contrasena").value;
+        var fechaNacimiento = document.getElementById("fecha-nacimiento").value;
+        var numeroRegex = /[0-9]/;
+        var letraMayusRegex = /[A-Z]/;
+        var fechaNacimientoDate = new Date(fechaNacimiento);
+        var hoy = new Date();
+        var edad = hoy.getFullYear() - fechaNacimientoDate.getFullYear();
+        var mes = hoy.getMonth() - fechaNacimientoDate.getMonth();
+
+        if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimientoDate.getDate())) {
+            edad--;
+        }
+
+        if (nombre == "" || apellido == "" || email == "" || contrasena == "" || confirmarContrasena == "" || fechaNacimiento == "") {
+            alert("Todos los campos del formulario son obligatorios, excepto la dirección de despacho");
+            return false;
+        }
+
+        if (contrasena.length < 8 || !numeroRegex.test(contrasena) || !letraMayusRegex.test(contrasena)) {
+            alert("La contraseña debe tener al menos 8 caracteres, un número y una letra en mayúscula");
+            return false;
+        }
+
+        if (contrasena != confirmarContrasena) {
+            alert("Las contraseñas no coinciden");
+            return false;
+        }
+
+        if (edad < 13) {
+            alert("Debes tener al menos 13 años para registrarte en este sitio web");
+            return false;
+        }
+
+        if (contrasena.length < 6 || contrasena.length > 18) {
+            alert("La contraseña debe tener entre 6 y 18 caracteres");
+            return false;
+        }
+
+
+        return true;
+    }
+</script>
+
+<footer>
+    <p>Blog de Videojuegos &copy; 2023</p>
+</footer>
+</body>
+
+</html>
